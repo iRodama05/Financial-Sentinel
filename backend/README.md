@@ -1,4 +1,4 @@
-# Guía de Arquitectura Backend - Financial Sentinel
+# Guía de Arquitectura Backend
 
 Este documento es la referencia técnica definitiva para el desarrollo del servidor de la SOFOM. Su objetivo es garantizar que el código se mantenga escalable, seguro y libre de antipatrones. Todo el equipo debe adherirse estrictamente a las reglas descritas aquí.
 
