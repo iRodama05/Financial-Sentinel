@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Denuncia Anónima</title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+    <div class="login-box">
+        <h1>Sistema SVA</h1>
+        <p>Denuncia Anónima</p>
+
+        <form action="/anonymous-report/submit" method="POST" enctype="multipart/form-data">
+            <label>Tipo de denuncia</label>
+            <select name="type" required>
+                <option value="">Seleccione</option>
+                <option value="lavado">Lavado de dinero</option>
+                <option value="fraude">Fraude</option>
+                <option value="corrupcion">Corrupción</option>
+                <option value="otro">Otro</option>
+            </select>
+
+            <label>Asunto</label>
+            <input type="text" name="subject" required>
+
+            <label>Involucrado</label>
+            <input type="text" name="involvedParty">
+
+            <label>Fecha</label>
+            <input type="date" name="date">
+
+            <label>Descripción</label>
+            <textarea name="description" rows="5" required></textarea>
+
+            <label>Adjuntar evidencia (opcional)</label>
+            <input type="file" name="archivo">
+
+            <button type="submit">Enviar denuncia</button>
+        </form>
+
+        <a href="/">Regresar</a>
+    </div>
+</body>
+</html>
