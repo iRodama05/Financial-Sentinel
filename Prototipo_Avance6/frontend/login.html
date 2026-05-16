@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+
+<body>
+
+    <div class="login-box">
+
+        <h1>Sistema SVA</h1>
+        <p>Inicio de sesión</p>
+
+        <form id="loginForm">
+
+            <label>Correo</label>
+            <input type="email" id="correo" placeholder="correo@ejemplo.com" required>
+
+            <label>Contraseña</label>
+            <input type="password" id="password" placeholder="********" required>
+
+            <div id="error-msg" style="display:none; color:red;">
+                Datos incorrectos
+            </div>
+
+            <button type="submit">Entrar</button>
+
+        </form>
+
+        <hr>
+
+        <p>Usuario de prueba</p>
+        <p>admin@sentinel.com</p>
+        <p>Password123!</p>
+
+    </div>
+
+    <script type="module" src="/js/views/login.js"></script>
+
+</body>
+</html>
