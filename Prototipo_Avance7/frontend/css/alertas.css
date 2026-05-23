@@ -1,0 +1,20 @@
+.badge {
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.badge-nueva { background: #fee2e2; color: #ef4444; border: 1px solid #fca5a5; }
+.badge-investigando { background: #fef3c7; color: #d97706; border: 1px solid #fcd34d; }
+.badge-cerrada { background: #d1fae5; color: #059669; border: 1px solid #6ee7b7; }
+
+.btn-dictamen {
+    background: #21409A;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+}
