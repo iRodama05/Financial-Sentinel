@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Reportes - Sistema SVA</title>
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/clientes.css">
+</head>
+<body class="app-body">
+    <div class="app-container">
+        <aside class="sidebar">
+            <h2 class="sidebar-brand">Sistema SVA</h2>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item">Dashboard</a>
+                <a href="clientes.html" class="nav-item">Clientes</a>
+                <a href="operaciones.html" class="nav-item">Operaciones</a>
+                <a href="alertas.html" class="nav-item">Alertas</a>
+                <a href="reportes.html" class="nav-item active">Reportes</a>
+            </nav>
+            <button id="btn-logout" class="nav-item logout-btn">Cerrar sesión</button>
+        </aside>
+
+        <main class="main-content">
+            <header class="dashboard-header">
+                <h1>Reportes</h1>
+                <p class="user-info">Usuario: <span id="nombre-usuario">...</span></p>
+                <p class="user-role">Rol: Oficial</p>
+            </header>
+
+            <h2 class="section-title">Reportes registrados</h2>
+            <p style="color: #666; margin-bottom: 20px;">Consulta los reportes que ya se encuentran en el sistema.</p>
+
+            <div class="cards-container mb-20">
+                <div class="summary-card">
+                    <h3>Reportes generados</h3>
+                    <p class="card-number" id="card-total">0</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Clientes incluidos</h3>
+                    <p class="card-number" id="card-clientes">0</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Con alerta</h3>
+                    <p class="card-number" id="card-alertas">0</p>
+                </div>
+            </div>
+
+            <h2 class="section-title" style="font-size: 20px;">Filtrar reportes</h2>
+            <div class="filters-container" style="align-items: flex-end;">
+                <div style="display:flex; flex-direction: column; width: 100%;">
+                    <label style="font-size: 13px; margin-bottom: 5px;">Fecha inicial</label>
+                    <input type="date" class="filter-input">
+                </div>
+                <div style="display:flex; flex-direction: column; width: 100%;">
+                    <label style="font-size: 13px; margin-bottom: 5px;">Fecha final</label>
+                    <input type="date" class="filter-input">
+                </div>
+                <button class="btn-primary" style="margin-bottom: 0; padding: 12px 30px; height: 46px;">Filtrar</button>
+            </div>
+
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Descripción</th>
+                            <th>Cliente</th>
+                            <th>Período</th>
+                            <th>Fecha</th>
+                            <th>Formato</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-reportes-body">
+                        <tr><td colspan="6" style="text-align: center;">Cargando bóveda de reportes...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+    <script type="module" src="js/views/reportes.js"></script>
+</body>
+</html>
