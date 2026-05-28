@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+    <div class="login-box">
+        <h1>Sistema SVA</h1>
+        <p>Inicio de sesión</p>
+        <form action="/login" method="POST">
+            <label>Correo</label>
+            <input type="email" name="email" placeholder="correo@ejemplo.com" required>
+
+            <label>Contraseña</label>
+            <input type="password" name="password" placeholder="********" required>
+
+            <div id="error-msg" style="display:none; color:red;">Datos incorrectos</div>
+
+            <button type="submit">Entrar</button>
+        </form>
+
+        <a href="/anonymous-report">Denuncia anónima</a>
+        <hr>
+        <p>Usuarios de prueba</p>
+        <p>oficial@fsst.com / admin123</p>
+        <p>viewer@fsst.com / viewer123</p>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+
+        if(params.get('error')){
+            document.getElementById('error-msg').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

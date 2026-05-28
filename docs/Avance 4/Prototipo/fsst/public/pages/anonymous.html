@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Denuncia Anónima — FSST</title>
+  <link rel="stylesheet" href="/css/login.css">
+  <style>
+    body { background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%); padding: 2rem 1rem; }
+    .anon-wrap { max-width: 860px; margin: 0 auto; }
+    .back-link {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      color: #475569; font-weight: 500; font-size: 0.9rem; margin-bottom: 1.5rem;
+      transition: color 0.15s;
+    }
+    .back-link:hover { color: #0f172a; }
+    .back-link svg { width: 20px; height: 20px; }
+    .card {
+      background: #fff; border-radius: 1rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      border: 1px solid #e2e8f0; margin-bottom: 1.5rem; overflow: hidden;
+    }
+    .card-body { padding: 2rem; }
+    .page-header { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.25rem; }
+    .header-icon {
+      width: 3.5rem; height: 3.5rem;
+      background: linear-gradient(135deg, #f97316, #dc2626);
+      border-radius: 0.75rem;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .header-icon svg { width: 2rem; height: 2rem; color: #fff; }
+    .page-header h1 { font-size: 1.75rem; font-weight: 700; color: #0f172a; }
+    .page-header p  { color: #475569; font-size: 0.9rem; margin-top: 0.25rem; }
+    .privacy-note {
+      background: #eff6ff; border: 1px solid #bfdbfe;
+      border-radius: 0.5rem; padding: 0.875rem 1rem;
+      display: flex; align-items: flex-start; gap: 0.5rem;
+      font-size: 0.875rem; color: #1e3a8a;
+    }
+    .anon-form { display: flex; flex-direction: column; gap: 1.25rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group label { font-size: 0.875rem; font-weight: 500; color: #334155; }
+    .form-group .opt { color: #94a3b8; font-weight: 400; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 0.7rem 0.875rem;
+      border: 1px solid #cbd5e1; border-radius: 0.5rem;
+      background: #f8fafc; color: #0f172a; font-size: 0.9rem;
+      outline: none; transition: all 0.15s; font-family: inherit;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.1); background: #fff;
+    }
+    .form-group textarea { height: 160px; resize: vertical; }
+    .upload-zone {
+      border: 2px dashed #cbd5e1; border-radius: 0.5rem;
+      padding: 2rem; text-align: center; cursor: pointer;
+      background: #f8fafc; transition: all 0.2s;
+    }
+    .upload-zone:hover { border-color: #93c5fd; background: #eff6ff; }
+    .upload-zone svg { width: 2.5rem; height: 2.5rem; color: #94a3b8; margin: 0 auto 0.75rem; display: block; }
+    .upload-zone p { font-weight: 500; color: #334155; margin-bottom: 0.25rem; }
+    .upload-zone small { color: #64748b; font-size: 0.8rem; }
+    .form-actions { display: flex; gap: 1rem; }
+    .btn-cancel {
+      flex: 1; padding: 0.75rem;
+      background: #f1f5f9; color: #475569; border: none;
+      border-radius: 0.5rem; font-size: 0.9rem; font-weight: 500; cursor: pointer;
+      transition: background 0.15s; text-align: center; text-decoration: none;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .btn-cancel:hover { background: #e2e8f0; }
+    .btn-submit {
+      flex: 1; padding: 0.75rem;
+      background: linear-gradient(90deg, #2563eb, #1d4ed8);
+      color: #fff; border: none; border-radius: 0.5rem;
+      font-size: 0.9rem; font-weight: 500; cursor: pointer;
+      box-shadow: 0 4px 12px rgba(37,99,235,0.3); transition: all 0.2s;
+    }
+    .btn-submit:hover { background: linear-gradient(90deg, #1d4ed8, #1e40af); }
+  </style>
+</head>
+<body>
+  <div class="anon-wrap">
+    <a href="/" class="back-link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+      Volver al inicio
+    </a>
+
+    <div class="card">
+      <div class="card-body">
+        <div class="page-header">
+          <div class="header-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <div>
+            <h1>Denuncia Anónima</h1>
+            <p>Complete el formulario para reportar actividades sospechosas de forma confidencial.</p>
+          </div>
+        </div>
+        <div class="privacy-note">
+          🔒 <strong>Confidencialidad garantizada:</strong>&nbsp;Su identidad permanecerá completamente anónima. No se recopila información personal.
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <form class="anon-form" action="/anonymous-report/submit" method="POST">
+          <div class="form-group">
+            <label>Tipo de denuncia</label>
+            <select name="type" required>
+              <option value="">Seleccione una opción</option>
+              <option value="lavado">Lavado de dinero</option>
+              <option value="fraude">Fraude</option>
+              <option value="corrupcion">Corrupción</option>
+              <option value="operacion_sospechosa">Operación sospechosa</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Asunto</label>
+            <input type="text" name="subject" placeholder="Breve descripción del asunto" required>
+          </div>
+          <div class="form-group">
+            <label>Parte involucrada <span class="opt">(opcional)</span></label>
+            <input type="text" name="involvedParty" placeholder="Nombre o identificación de personas o entidades involucradas">
+          </div>
+          <div class="form-group">
+            <label>Fecha del incidente <span class="opt">(opcional)</span></label>
+            <input type="date" name="date">
+          </div>
+          <div class="form-group">
+            <label>Descripción detallada</label>
+            <textarea name="description" placeholder="Describa los hechos en detalle: qué sucedió, cuándo, dónde, quiénes estuvieron involucrados, montos aproximados, etc." required></textarea>
+          </div>
+          <div class="form-group">
+            <label>Archivo adjunto <span class="opt">(opcional)</span></label>
+            <div class="upload-zone">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
+              <p>Haga clic o arrastre archivos aquí</p>
+              <small>PDF, imágenes, documentos (máx. 10MB)</small>
+            </div>
+          </div>
+          <div class="form-actions">
+            <a href="/" class="btn-cancel">Cancelar</a>
+            <button type="submit" class="btn-submit">Enviar denuncia</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

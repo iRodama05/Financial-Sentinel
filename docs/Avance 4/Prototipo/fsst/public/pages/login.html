@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FSST — Iniciar Sesión</title>
+  <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+  <div class="login-bg">
+    <div class="login-box">
+      <div class="login-logo">
+        <div class="login-logo-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+        </div>
+        <h1>FSST</h1>
+        <p class="tagline">Financial Sentinel System</p>
+        <p class="sub">Sistema de Cumplimiento y Prevención</p>
+      </div>
+
+      <form class="login-form" action="/login" method="POST">
+        <div class="form-group">
+          <label for="email">Correo electrónico</label>
+          <div class="input-wrap">
+            <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <input id="email" type="email" name="email" placeholder="usuario@ejemplo.com" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Contraseña</label>
+          <div class="input-wrap">
+            <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <input id="password" type="password" name="password" placeholder="••••••••" required>
+          </div>
+        </div>
+
+        <div id="error-msg" class="error-msg" style="display:none">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
+          Credenciales inválidas. Intenta de nuevo.
+        </div>
+
+        <button type="submit" class="btn-login">Iniciar sesión</button>
+      </form>
+
+      <div class="anon-link">
+        <a href="/anonymous-report">Enviar denuncia anónima →</a>
+      </div>
+
+      <div class="demo-creds">
+        <p class="demo-title">Credenciales de prueba:</p>
+        <div class="demo-box">
+          <p><strong>Oficial:</strong> oficial@fsst.com / admin123</p>
+          <p><strong>Visualizador:</strong> viewer@fsst.com / viewer123</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('error')) {
+      document.getElementById('error-msg').style.display = 'flex';
+    }
+  </script>
+</body>
+</html>
