@@ -1,6 +1,10 @@
 import pool from '../db/connection.js';
 import csv from 'csv-parser';
 import { Readable } from 'stream';
+import multer from 'multer'; // 1. IMPORTAMOS EL ATRAPADOR
+
+// 2. CONFIGURAMOS EL ATRAPADOR (Para que guarde el archivo temporalmente en la RAM)
+const upload = multer({ storage: multer.memoryStorage() });
 
 export const procesarCargaMasiva = async (req, res) => {
     try {
@@ -42,7 +46,7 @@ export const procesarCargaMasiva = async (req, res) => {
                         const es_pep = /^(true|si|sí|1)$/i.test(cliente.es_pep?.trim());
                         const actua_cuenta_propia = /^(true|si|sí|1)$/i.test(cliente.actua_cuenta_propia?.trim());
 
-                        // 3. Inserción SQL
+                        // 3. Inserción SQL (Le añadimos ON CONFLICT para ignorar duplicados)
                         const query = `
                             INSERT INTO clientes (
                                 rfc, curp, nombre_completo, fecha_nacimiento, nacionalidad, pais_nacimiento, 
@@ -50,6 +54,7 @@ export const procesarCargaMasiva = async (req, res) => {
                             ) VALUES (
                                 $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13
                             )
+                            ON CONFLICT (rfc) DO NOTHING;
                         `;
                         
                         await clienteDB.query(query, [
@@ -78,3 +83,7 @@ export const procesarCargaMasiva = async (req, res) => {
         res.status(500).json({ error: "Fallo interno procesando el archivo binario." });
     }
 };
+
+// 3. EXPORTAMOS EL MIDDLEWARE PARA QUE TUS RUTAS LO ENCUENTREN
+// Nota: 'archivo_csv' es exactamente el nombre que tu frontend manda en el FormData
+export const uploadMiddleware = upload.single('archivo_csv');

@@ -18,7 +18,7 @@ export const crearUsuario = async (req, res) => {
 
         // 4. Inserción en la Base de Datos
         const query = `
-            INSERT INTO usuarios (nombre, correo, password_hash, rol, activo) 
+            INSERT INTO usuarios_sistema (nombre, correo, password_hash, rol, activo) 
             VALUES ($1, $2, $3, $4, $5) 
             RETURNING id, nombre, correo, rol, activo;
         `;
