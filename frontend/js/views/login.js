@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Si pasamos, guardamos el gafete (Token)
                 localStorage.setItem('token_sentinel', respuesta.token);
                 localStorage.setItem('usuario_nombre', respuesta.usuario.nombre);
+                localStorage.setItem('usuario_rol', respuesta.usuario.rol);
 
                 // Redirigimos al panel de control
                 window.location.href = 'dashboard.html';
