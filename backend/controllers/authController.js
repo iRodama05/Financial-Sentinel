@@ -27,11 +27,15 @@ export const login = async (req, res) => {
             return res.status(401).json({ error: "Correo o contraseña incorrectos" });
         }
 
-        // Generamos el Token de Seguridad
+        // Dentro de tu función de login, cuando firmas el token:
         const token = jwt.sign(
-            { id: usuario.id, rol: usuario.rol }, 
+            { 
+                id: usuarioDb.id, 
+                email: usuarioDb.email, 
+                rol: usuarioDb.rol
+            }, 
             process.env.JWT_SECRET, 
-            { expiresIn: '8h' } // El token caduca en 8 horas
+            { expiresIn: '8h' }
         );
 
         // Respondemos con éxito

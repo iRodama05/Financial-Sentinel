@@ -1,0 +1,80 @@
+import pool from '../db/connection.js';
+import csv from 'csv-parser';
+import { Readable } from 'stream';
+
+export const procesarCargaMasiva = async (req, res) => {
+    try {
+        if (!req.file) {
+            return res.status(400).json({ error: "No se subió ningún archivo CSV." });
+        }
+
+        const clientesNuevos = [];
+        const stream = Readable.from(req.file.buffer);
+
+        stream
+            .pipe(csv())
+            .on('data', (fila) => {
+                clientesNuevos.push(fila);
+            })
+            .on('end', async () => {
+                // Iniciamos una transacción en la base de datos para asegurar integridad
+                const clienteDB = await pool.connect();
+                
+                try {
+                    await clienteDB.query('BEGIN'); // Empezamos la transacción
+
+                    for (const cliente of clientesNuevos) {
+                        // 1. Limpieza de datos (Si viene vacío en el CSV, lo volvemos nulo)
+                        const rfc = cliente.rfc || null;
+                        const curp = cliente.curp || null;
+                        const nombre_completo = cliente.nombre_completo || null;
+                        const fecha_nacimiento = cliente.fecha_nacimiento || null;
+                        const nacionalidad = cliente.nacionalidad || null;
+                        const pais_nacimiento = cliente.pais_nacimiento || null;
+                        const genero = cliente.genero || null;
+                        const estado_civil = cliente.estado_civil || null;
+                        const tel_celular = cliente.tel_celular || null;
+                        const tel_fijo = cliente.tel_fijo || null;
+                        const correo = cliente.correo || null;
+
+                        // 2. Transformación a Booleanos (PLD)
+                        // Si el CSV dice "true", "si", "sí" o "1", lo tomamos como verdadero
+                        const es_pep = /^(true|si|sí|1)$/i.test(cliente.es_pep?.trim());
+                        const actua_cuenta_propia = /^(true|si|sí|1)$/i.test(cliente.actua_cuenta_propia?.trim());
+
+                        // 3. Inserción SQL
+                        const query = `
+                            INSERT INTO clientes (
+                                rfc, curp, nombre_completo, fecha_nacimiento, nacionalidad, pais_nacimiento, 
+                                genero, estado_civil, tel_celular, tel_fijo, correo, es_pep, actua_cuenta_propia
+                            ) VALUES (
+                                $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13
+                            )
+                        `;
+                        
+                        await clienteDB.query(query, [
+                            rfc, curp, nombre_completo, fecha_nacimiento, nacionalidad, pais_nacimiento,
+                            genero, estado_civil, tel_celular, tel_fijo, correo, es_pep, actua_cuenta_propia
+                        ]);
+                    }
+
+                    await clienteDB.query('COMMIT'); // Guardamos todo de golpe si no hubo errores
+                    
+                    res.status(200).json({ 
+                        mensaje: `¡Ingesta exitosa! Se importaron ${clientesNuevos.length} clientes a la bóveda.` 
+                    });
+
+                } catch (dbError) {
+                    await clienteDB.query('ROLLBACK'); // Si un cliente falla, cancelamos toda la carga (Integridad)
+                    console.error("Error al insertar el lote CSV en DB:", dbError);
+                    res.status(500).json({ error: "Fallo durante la inserción. Revisa el formato de los datos." });
+                } finally {
+                    clienteDB.release(); // Liberamos la conexión
+                }
+            });
+
+    } catch (error) {
+        console.error("Error crítico:", error);
+        res.status(500).json({ error: "Fallo interno procesando el archivo binario." });
+    }
+};

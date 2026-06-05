@@ -25,3 +25,24 @@ export const verificarToken = (req, res, next) => {
         return res.status(403).json({ error: "Acceso denegado: Token inválido o expirado." });
     }
 };
+
+    export const verificarRolAdmin = (req, res, next) => {
+    // Si el usuario es un visor, le cortamos el paso inmediatamente
+    if (req.usuario && req.usuario.rol === 'Visor') {
+        return res.status(403).json({ 
+            error: "Acceso denegado: Tu perfil es de solo lectura. No puedes modificar registros." 
+        });
+    }
+
+    next();
+};
+
+export const verificarAdminAbsoluto = (req, res, next) => {
+    // Si no es admin, lo rebotamos instantáneamente
+    if (req.usuario && req.usuario.rol !== 'Administrador') {
+        return res.status(403).json({ 
+            error: "Acceso denegado: Operación clasificada. Solo administradores pueden gestionar usuarios." 
+        });
+    }
+    next();
+};
