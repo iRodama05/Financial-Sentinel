@@ -12,7 +12,7 @@ import bcrypt from 'bcrypt';
 import clienteRoutes from './routes/clientRoutes.js';
 import reporteRoutes from './routes/reporteRoutes.js';
 import usuarioRoutes from './routes/usuarioRoutes.js';
-import cargaRoutes from './routes/cargaRoutes.js'; 
+// import cargaRoutes from './routes/cargaRoutes.js'; 
 
 dotenv.config();
 
