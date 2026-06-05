@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('btn-logout').addEventListener('click', () => {
         localStorage.removeItem('token_sentinel');
         localStorage.removeItem('usuario_nombre');
-        window.location.href = 'login.html';
+        window.location.href = 'index.html';
     });
 
     try {
