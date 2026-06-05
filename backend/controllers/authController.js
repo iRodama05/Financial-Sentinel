@@ -30,9 +30,9 @@ export const login = async (req, res) => {
         // Dentro de tu función de login, cuando firmas el token:
         const token = jwt.sign(
             { 
-                id: usuarioDb.id, 
-                email: usuarioDb.email, 
-                rol: usuarioDb.rol
+                id: usuario.id, 
+                email: usuario.email, 
+                rol: usuario.rol
             }, 
             process.env.JWT_SECRET, 
             { expiresIn: '8h' }
