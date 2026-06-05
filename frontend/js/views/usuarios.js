@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const feedback = document.getElementById('usuario-feedback');
 
     // Verificación de rango de seguridad
-    if (rolUsuario !== 'admin' || !token) {
+    if (rolUsuario !== 'Administrador' || !token) {
         seccionFormulario.style.display = 'none';
         bloqueoAdmin.style.display = 'block';
         return;

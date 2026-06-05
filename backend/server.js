@@ -11,6 +11,8 @@ import contratoRoutes from './routes/contratoRoutes.js';
 import bcrypt from 'bcrypt';
 import clienteRoutes from './routes/clientRoutes.js';
 import reporteRoutes from './routes/reporteRoutes.js';
+import usuarioRoutes from './routes/usuarioRoutes.js';
+import cargaRoutes from './routes/cargaRoutes.js'; 
 
 dotenv.config();
 
@@ -42,6 +44,7 @@ app.use('/api/clientes', clienteRoutes);
 app.use('/api/alertas', alertaRoutes);
 app.use('/api/operaciones', operacionRoutes);
 app.use('/api/reportes', reporteRoutes);
+app.use('/api/usuarios', usuarioRoutes);
 
 
 // RUTA TEMPORAL PARA GENERAR REGLAS PERFILADAS Y ALERTAS

@@ -2,61 +2,71 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>SVA - Panel de Control de Identidades</title>
-    <link rel="stylesheet" href="css/estilos.css">
-    <style>
-        .container { padding: 30px; max-width: 600px; margin: 0 auto; }
-        .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; color: #333; }
-        .form-control { width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; }
-        .btn-guardar {
-            background: #198754; color: white; border: none; padding: 10px 15px;
-            border-radius: 4px; font-weight: bold; cursor: pointer; width: 100%;
-        }
-        .btn-guardar:disabled { background: #6c757d; }
-        .alerta { padding: 12px; border-radius: 4px; margin-top: 15px; display: none; font-size: 14px; }
-        .alerta-exito { background: #d1e7dd; color: #0f5132; border: 1px solid #badbcc; }
-        .alerta-error { background: #f8d7da; color: #842029; border: 1px solid #f5c2c7; }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Usuarios - Sistema SVA</title>
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/modulos.css">
 </head>
-<body>
-    <div class="container">
-        <h2>Gestión de Accesos e Identidades</h2>
-        <p>Añadir nuevos operadores, oficiales de cumplimiento o administradores al sistema transaccional.</p>
+<body class="app-body">
+    <div class="app-container">
+        
+        <aside class="sidebar">
+            <h2 class="sidebar-brand">Sistema SVA</h2>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item">Dashboard</a>
+                <a href="clientes.html" class="nav-item">Clientes</a>
+                <a href="operaciones.html" class="nav-item">Operaciones</a>
+                <a href="alertas.html" class="nav-item">Alertas</a>
+                <a href="reportes.html" class="nav-item">Reportes</a>
+                <a href="carga-masiva.html" class="nav-item" id="menu-csv" style="display: none;">Carga Masiva CSV</a>
+                <a href="usuarios.html" class="nav-item active" id="menu-usuarios" style="display: none;">Gestión Usuarios</a>
+            </nav>
+            <button id="btn-logout" class="nav-item logout-btn">Cerrar sesión</button>
+        </aside>
 
-        <div id="bloqueo-admin" class="alerta alerta-error" style="display: none;">
-            <strong>Acceso Restringido:</strong> Esta sección requiere privilegios de Administrador de Sistema. Su intento de acceso ha sido registrado para auditoría.
-        </div>
+        <main class="main-content">
+            <header class="dashboard-header">
+                <h2>Gestión de Accesos e Identidades</h2>
+            </header>
 
-        <div id="seccion-formulario-usuarios">
-            <form id="form-alta-usuario">
-                <div class="form-group">
-                    <label for="txt-nombre">Nombre Completo:</label>
-                    <input type="text" id="txt-nombre" class="form-control" placeholder="Ej. Lic. Alejandro Garza" required>
+            <div class="modulo-container">
+                <div id="bloqueo-admin" class="alerta alerta-error">
+                    <strong>Acceso Restringido:</strong> Esta sección requiere privilegios de Administrador.
                 </div>
-                <div class="form-group">
-                    <label for="txt-correo">Correo Electrónico Institucional:</label>
-                    <input type="email" id="txt-correo" class="form-control" placeholder="usuario@fsst.com" required>
+
+                <div id="seccion-formulario-usuarios">
+                    <form id="form-alta-usuario">
+                        <div class="form-group">
+                            <label>Nombre Completo:</label>
+                            <input type="text" id="txt-nombre" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Correo Electrónico:</label>
+                            <input type="email" id="txt-correo" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Contraseña Temporal:</label>
+                            <input type="password" id="txt-password" class="form-control" minlength="6" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Rol en el Sistema:</label>
+                            <select id="select-rol" class="form-control" required>
+                                <option value="" disabled selected>-- Seleccione nivel --</option>
+                                <option value="admin">Administrador</option>
+                                <option value="oficial">Oficial de Cumplimiento</option>
+                                <option value="visor">Visor de Auditoría</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn-primary" id="btn-crear-usuario">Dar de Alta Usuario</button>
+                    </form>
+                    <div id="usuario-feedback" class="alerta"></div>
                 </div>
-                <div class="form-group">
-                    <label for="txt-password">Contraseña Temporal:</label>
-                    <input type="password" id="txt-password" class="form-control" minlength="6" required>
-                </div>
-                <div class="form-group">
-                    <label for="select-rol">Rol Asignado en el Sistema:</label>
-                    <select id="select-rol" class="form-control" required>
-                        <option value="" disabled selected>-- Seleccione un nivel de acceso --</option>
-                        <option value="admin">Administrador (Acceso Total)</option>
-                        <option value="oficial">Oficial de Cumplimiento (Gestión y Dictamen)</option>
-                        <option value="visor">Visor de Auditoría (Solo Lectura)</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn-guardar" id="btn-crear-usuario">Dar de Alta Usuario</button>
-            </form>
-            <div id="usuario-feedback" class="alerta"></div>
-        </div>
+            </div>
+        </main>
     </div>
 
     <script type="module" src="js/views/usuarios.js"></script>
+    <script src="js/components/sidebar.js"></script>
 </body>
 </html>

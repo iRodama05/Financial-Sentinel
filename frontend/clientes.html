@@ -15,11 +15,13 @@
         <aside class="sidebar">
             <h2 class="sidebar-brand">Sistema SVA</h2>
             <nav class="sidebar-nav">
-                <a href="dashboard.html" class="nav-item">Dashboard</a>
-                <a href="clientes.html" class="nav-item active">Clientes</a>
+                <a href="dashboard.html" class="nav-item active">Dashboard</a>
+                <a href="clientes.html" class="nav-item">Clientes</a>
                 <a href="operaciones.html" class="nav-item">Operaciones</a>
                 <a href="alertas.html" class="nav-item">Alertas</a>
                 <a href="reportes.html" class="nav-item">Reportes</a>
+                <a href="carga-masiva.html" class="nav-item" id="menu-csv" style="display: none;">Carga Masiva CSV</a>
+                <a href="usuarios.html" class="nav-item" id="menu-usuarios" style="display: none;">Gestión Usuarios</a>
             </nav>
             <button id="btn-logout" class="nav-item logout-btn">Cerrar sesión</button>
         </aside>
@@ -31,7 +33,13 @@
                 <p class="user-role">Rol: Oficial de Cumplimiento</p>
             </header>
 
-            <h2 class="section-title">Lista de Clientes</h2>
+            <div class="header-clientes" style="display: flex; justify-content: space-between; align-items: center;">
+                <h2>Lista de Clientes</h2>
+                
+                <a href="/carga-masiva.html" id="btn-importar-csv" class="btn btn-primary" style="display: none;">
+                    📥 Importar CSV
+                </a>
+            </div>
 
             <div class="cards-container mb-20">
                 <div class="summary-card">
@@ -89,5 +97,6 @@
     </div>
 
     <script type="module" src="js/views/clientes.js"></script>
+    <script src="/js/components/sidebar.js"></script>
 </body>
 </html>
