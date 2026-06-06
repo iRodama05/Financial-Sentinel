@@ -46,3 +46,13 @@ export const verificarAdminAbsoluto = (req, res, next) => {
     }
     next();
 };
+
+export const verificarEmpleado = (req, res, next) => {
+    // Si no es admin, lo rebotamos instantáneamente
+    if (req.usuario && req.usuario.rol !== 'Empleado') {
+        return res.status(403).json({ 
+            error: "Acceso denegado: Tu perfil solo permite denuncias anónimas y consulta de operaciones." 
+        });
+    }
+    next();
+};
