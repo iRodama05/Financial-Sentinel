@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch (error) {
         // Esto te dirá exactamente por qué rebotó la conexión
         console.error("Fallo crítico en la red:", error); 
-        document.getElementById('tabla-operaciones-body').innerHTML = `<tr><td colspan="7" style="color:red">Error al conectar con el historial transaccional</td></tr>`;
+        document.getElementById('tabla-operaciones-body').innerHTML = `<tr><td colspan="6" style="color:red">Error al conectar con el historial transaccional</td></tr>`;
     }
 
     // EVENTOS DE BÚSQUEDA Y FILTRO EN TIEMPO REAL
@@ -49,7 +49,7 @@ function renderizarTabla(datosFiltrados) {
     cuerpo.innerHTML = '';
 
     if (datosFiltrados.length === 0) {
-        cuerpo.innerHTML = '<tr><td colspan="7" style="text-align:center;">No se encontraron movimientos coincidiendo con los criterios</td></tr>';
+        cuerpo.innerHTML = '<tr><td colspan="6" style="text-align:center;">No se encontraron movimientos coincidiendo con los criterios</td></tr>';
         return;
     }
 
@@ -62,7 +62,6 @@ function renderizarTabla(datosFiltrados) {
 
         const tr = document.createElement('tr');
         tr.innerHTML = `
-            <td>O-00${o.folio_operacion}</td>
             <td>${fechaLimpia}</td>
             <td><strong>${o.nombre_cliente}</strong></td>
             <td>C-00${o.contrato_folio}</td>

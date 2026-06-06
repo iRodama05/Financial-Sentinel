@@ -79,7 +79,6 @@ function renderizarTabla(datos) {
         }
         
         tr.innerHTML = `
-            <td><strong>R-00${r.id}</strong></td>
             <td>${r.descripcion || 'Reporte Regulatorio'}</td>
             <td>${r.nombre_cliente || 'Cliente no especificado'}</td>
             <td style="text-transform: capitalize;">${r.periodo || 'N/A'}</td>

@@ -1,0 +1,30 @@
+.denuncia-form {
+    padding: 25px;
+}
+
+.denuncia-form .form-group {
+    margin-bottom: 18px;
+}
+
+.denuncia-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+    font-size: 15px;
+}
+
+.denuncia-form .filter-input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.denuncia-form textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+#btn-enviar-denuncia {
+    padding: 10px 18px;
+    margin-top: 5px;
+}

@@ -44,7 +44,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             topClientes.forEach(c => {
                 cuerpoClientes.innerHTML += `
                     <tr>
-                        <td>C-00${c.id}</td>
                         <td>${c.nombre_completo}</td>
                         <td>${c.rfc}</td>
                         <td>${c.correo}</td>
@@ -65,7 +64,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             topAlertas.forEach(a => {
                 cuerpoAlertas.innerHTML += `
                     <tr>
-                        <td>A-00${a.id}</td>
                         <td><strong>${a.nombre_cliente}</strong></td>
                         <td>${a.nombre_regla || 'Regla General'}</td>
                         <td><span style="color: ${a.estatus === 'Nueva' ? 'red' : 'orange'}">${a.estatus}</span></td>

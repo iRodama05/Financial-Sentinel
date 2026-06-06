@@ -21,6 +21,7 @@
                 <a href="operaciones.html" class="nav-item active">Operaciones</a>
                 <a href="alertas.html" class="nav-item">Alertas</a>
                 <a href="reportes.html" class="nav-item">Reportes</a>
+                <a href="denuncia-anonima.html" class="nav-item">Denuncia Anónima</a>
                 <a href="carga-masiva.html" class="nav-item" id="menu-csv" style="display: none;">Carga Masiva CSV</a>
                 <a href="usuarios.html" class="nav-item" id="menu-usuarios" style="display: none;">Gestión Usuarios</a>
             </nav>
@@ -52,7 +53,7 @@
             </div>
 
             <div class="filters-container">
-                <input type="text" id="input-busqueda-ops" class="filter-input" placeholder="Buscar por cliente, contrato, folio...">
+                <input type="text" id="input-busqueda-ops" class="filter-input" placeholder="Buscar por cliente o contrato...">
                 <select id="select-tipo-mov" class="filter-select" style="width: 200px;">
                     <option value="TODOS">Todos los tipos</option>
                     <option value="Deposito">Depósitos</option>
@@ -64,7 +65,6 @@
                 <table class="data-table">
                     <thead>
                         <tr>
-                            <th>Folio Op.</th>
                             <th>Fecha</th>
                             <th>Cliente</th>
                             <th>Contrato</th>
@@ -74,7 +74,7 @@
                         </tr>
                     </thead>
                     <tbody id="tabla-operaciones-body">
-                        <tr><td colspan="7" style="text-align: center;">Analizando flujo transaccional...</td></tr>
+                        <tr><td colspan="6" style="text-align: center;">Analizando flujo transaccional...</td></tr>
                     </tbody>
                 </table>
             </div>
