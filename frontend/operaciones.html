@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial Transaccional - Sistema SVA</title>
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/clientes.css">
+    <link rel="stylesheet" href="css/operaciones.css"> 
+</head>
+<body class="app-body">
+
+    <div class="app-container">
+        
+        <aside class="sidebar">
+            <h2 class="sidebar-brand">Sistema SVA</h2>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item">Dashboard</a>
+                <a href="clientes.html" class="nav-item">Clientes</a>
+                <a href="operaciones.html" class="nav-item active">Operaciones</a>
+                <a href="alertas.html" class="nav-item">Alertas</a>
+                <a href="reportes.html" class="nav-item">Reportes</a>
+                <a href="denuncia-anonima.html" class="nav-item">Denuncia Anónima</a>
+                <a href="carga-masiva.html" class="nav-item" id="menu-csv" style="display: none;">Carga Masiva CSV</a>
+                <a href="usuarios.html" class="nav-item" id="menu-usuarios" style="display: none;">Gestión Usuarios</a>
+            </nav>
+            <button id="btn-logout" class="nav-item logout-btn">Cerrar sesión</button>
+        </aside>
+
+        <main class="main-content">
+            <header class="dashboard-header">
+                <h1>Operaciones y Movimientos</h1>
+                <p class="user-info">Usuario: <span id="nombre-usuario">Cargando...</span></p>
+                <p class="user-role">Rol: Oficial de Cumplimiento</p>
+            </header>
+
+            <h2 class="section-title">Resumen Transaccional</h2>
+
+            <div class="cards-container mb-20">
+                <div class="summary-card">
+                    <h3>Monto Total</h3>
+                    <p class="card-number" id="card-monto-total">$0.00</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Depósitos Hoy</h3>
+                    <p class="card-number" id="card-depositos">0</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Retiros Hoy</h3>
+                    <p class="card-number" id="card-retiros">0</p>
+                </div>
+            </div>
+
+            <div class="filters-container">
+                <input type="text" id="input-busqueda-ops" class="filter-input" placeholder="Buscar por cliente o contrato...">
+                <select id="select-tipo-mov" class="filter-select" style="width: 200px;">
+                    <option value="TODOS">Todos los tipos</option>
+                    <option value="Deposito">Depósitos</option>
+                    <option value="Retiro">Retiros</option>
+                </select>
+            </div>
+
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Cliente</th>
+                            <th>Contrato</th>
+                            <th>Tipo</th>
+                            <th>Monto</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-operaciones-body">
+                        <tr><td colspan="6" style="text-align: center;">Analizando flujo transaccional...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <script type="module" src="js/views/operaciones.js"></script>
+    <script src="/js/components/sidebar.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+/* frontend/css/modulos.css */
+.modulo-container {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    max-width: 800px;
+    margin-top: 20px;
+}
+
+/* Zona de Drag & Drop para CSV */
+.drop-zone {
+    border: 2px dashed #007bff; /* Tu azul primario */
+    border-radius: 8px;
+    padding: 40px;
+    text-align: center;
+    background: #f8f9fa;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.drop-zone:hover, .drop-zone.drop-zone--over {
+    background: #e9ecef;
+    border-color: #0056b3;
+}
+
+.drop-zone p { margin: 0; font-size: 16px; color: #495057; }
+
+/* Formularios de Usuario */
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #333; }
+.form-control { 
+    width: 100%; 
+    padding: 10px; 
+    border: 1px solid #ced4da; 
+    border-radius: 4px; 
+    font-size: 14px;
+}
+.form-control:focus { outline: none; border-color: #007bff; }
+
+/* Alertas del sistema */
+.alerta { padding: 15px; border-radius: 4px; margin-top: 20px; display: none; font-size: 14px; }
+.alerta-exito { background: #d1e7dd; color: #0f5132; border: 1px solid #badbcc; }
+.alerta-error { background: #f8d7da; color: #842029; border: 1px solid #f5c2c7; }
