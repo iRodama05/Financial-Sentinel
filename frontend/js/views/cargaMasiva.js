@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.append('archivo_csv', fileInput.files[0]); 
 
         try {
-            const respuesta = await fetch('https://financial-sentinel.onrender.com/api/carga/clientes', {
+            const respuesta = await fetch('http://s9ddf9px2u662rwatb5mq860.198.211.99.43.sslip.io/api/carga/clientes', {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`
