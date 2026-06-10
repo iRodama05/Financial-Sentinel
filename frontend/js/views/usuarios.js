@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         try {
-            const respuesta = await fetch('https://financial-sentinel.onrender.com/api/usuarios', {
+            const respuesta = await fetch('http://s9ddf9px2u662rwatb5mq860.198.211.99.43.sslip.io/api/usuarios', {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,

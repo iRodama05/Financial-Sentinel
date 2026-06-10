@@ -17,10 +17,5 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (rolUsuario === 'oficial' || rolUsuario === 'oficial de cumplimiento') {
         if (menuCsv) menuCsv.style.display = 'block';
         if (btnImportarCsv) btnImportarCsv.style.display = 'inline-block';
-        
-    } else if(rolUsuario == 'empleado') {
-        if (menuUsuarios) menuUsuarios.style.display = 'none';
-        if (menuCsv) menuCsv.style.display = 'none';
-        if (btnImportarCsv) btnImportarCsv.style.display = 'none';
     }
 });
