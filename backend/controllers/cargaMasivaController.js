@@ -16,7 +16,13 @@ export const procesarCargaMasiva = async (req, res) => {
         const stream = Readable.from(req.file.buffer);
 
         stream
-            .pipe(csv())
+            .pipe(csv({
+                mapHeaders: ({ header }) => header
+                    .replace(/^\uFEFF/, '') // Quita caracteres ocultos de Excel
+                    .trim()
+                    .toLowerCase()
+                    .replace(/\s+/g, '_')
+            }))
             .on('data', (fila) => {
                 clientesNuevos.push(fila);
             })
@@ -29,17 +35,22 @@ export const procesarCargaMasiva = async (req, res) => {
 
                     for (const cliente of clientesNuevos) {
                         // 1. Limpieza de datos (Si viene vacío en el CSV, lo volvemos nulo)
-                        const rfc = cliente.rfc || null;
-                        const curp = cliente.curp || null;
-                        const nombre_completo = cliente.nombre_completo || null;
-                        const fecha_nacimiento = cliente.fecha_nacimiento || null;
-                        const nacionalidad = cliente.nacionalidad || null;
-                        const pais_nacimiento = cliente.pais_nacimiento || null;
-                        const genero = cliente.genero || null;
-                        const estado_civil = cliente.estado_civil || null;
-                        const tel_celular = cliente.tel_celular || null;
-                        const tel_fijo = cliente.tel_fijo || null;
-                        const correo = cliente.correo || null;
+                        const rfc = cliente.rfc?.trim() || null;
+                        const curp = cliente.curp?.trim() || null;
+                        const nombre_completo = cliente.nombre_completo?.trim() || null;
+                        const fecha_nacimiento = cliente.fecha_nacimiento?.trim() || null;
+                        const nacionalidad = cliente.nacionalidad?.trim() || null;
+                        const pais_nacimiento = cliente.pais_nacimiento?.trim() || null;
+                        const genero = cliente.genero?.trim() || null;
+                        const estado_civil = cliente.estado_civil?.trim() || null;
+                        const tel_celular = cliente.tel_celular?.trim() || null;
+                        const tel_fijo = cliente.tel_fijo?.trim() || null;
+                        const correo = cliente.correo?.trim() || null;
+
+                        if (!rfc || !curp || !nombre_completo) {
+                            console.log('Fila inválida omitida:', cliente);
+                            continue;
+                        }
 
                         // 2. Transformación a Booleanos (PLD)
                         // Si el CSV dice "true", "si", "sí" o "1", lo tomamos como verdadero
