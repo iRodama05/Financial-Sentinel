@@ -13,6 +13,7 @@ import reporteRoutes from './routes/reporteRoutes.js';
 import usuarioRoutes from './routes/usuarioRoutes.js';
 import cargaRoutes from './routes/cargaRoutes.js';
 import bitacoraRoutes from './routes/bitacoraRoutes.js';
+import denunciaRoutes from './routes/denunciaRoutes.js';
 
 dotenv.config();
 
@@ -40,6 +41,7 @@ app.use('/api/reportes', reporteRoutes);
 app.use('/api/usuarios', usuarioRoutes);
 app.use('/api/carga', cargaRoutes);
 app.use('/api/bitacora', bitacoraRoutes);
+app.use('/api/denuncias', denunciaRoutes);
 
 
 

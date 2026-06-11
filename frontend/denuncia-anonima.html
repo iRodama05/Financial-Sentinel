@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Denuncia Anónima - Sistema SVA</title>
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body class="app-body">
+<div class="app-container">
+    <aside class="sidebar">
+        <h2 class="sidebar-brand">Sistema SVA</h2>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">Dashboard</a>
+            <a href="clientes.html" class="nav-item">Clientes</a>
+            <a href="operaciones.html" class="nav-item">Operaciones</a>
+            <a href="alertas.html" class="nav-item">Alertas</a>
+            <a href="reportes.html" class="nav-item">Reportes</a>
+            <a href="denuncia-anonima.html" class="nav-item active">Denuncia Anónima</a>
+            <a href="bitacora.html" class="nav-item" id="menu-bitacora" style="display: none;">Bitácora</a>
+            <a href="carga-masiva.html" class="nav-item" id="menu-csv" style="display: none;">Carga Masiva CSV</a>
+            <a href="usuarios.html" class="nav-item" id="menu-usuarios" style="display: none;">Gestión Usuarios</a>
+        </nav>
+        <button id="btn-logout" class="nav-item logout-btn">Cerrar sesión</button>
+    </aside>
+    <main class="main-content">
+        <header class="dashboard-header">
+            <h1>Denuncia Anónima</h1>
+            <p class="user-info">Su identidad permanecerá completamente anónima.</p>
+        </header>
+        <div id="panel-exito" style="display:none; background:#d1fae5; border:1px solid #6ee7b7; color:#065f46; padding:16px; border-radius:8px; margin-bottom:20px;">
+            <strong>✓ Denuncia enviada correctamente.</strong> Su reporte ha sido registrado de forma confidencial.
+        </div>
+        <div id="panel-error" style="display:none; background:#fee2e2; border:1px solid #fca5a5; color:#991b1b; padding:16px; border-radius:8px; margin-bottom:20px;"></div>
+        <div style="background:#fff; border-radius:8px; padding:32px; box-shadow:0 1px 4px rgba(0,0,0,.08); max-width:700px;">
+            <div class="form-group">
+                <label for="tipo-denuncia">Tipo de denuncia</label>
+                <select id="tipo-denuncia" class="form-control" style="width:100%; padding:12px; border:1px solid #ddd; border-radius:4px; font-size:15px;">
+                    <option value="" disabled selected>Seleccione una opción</option>
+                    <option value="Lavado de dinero">Lavado de dinero</option>
+                    <option value="Fraude">Fraude</option>
+                    <option value="Corrupción">Corrupción</option>
+                    <option value="Financiamiento al terrorismo">Financiamiento al terrorismo</option>
+                    <option value="Operación sospechosa">Operación sospechosa</option>
+                    <option value="Otro">Otro</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="asunto-denuncia">Asunto</label>
+                <input type="text" id="asunto-denuncia" placeholder="Breve descripción del asunto"
+                    style="width:100%; padding:12px; border:1px solid #ddd; border-radius:4px; font-size:15px;">
+            </div>
+            <div class="form-group">
+                <label for="descripcion-denuncia">Descripción detallada</label>
+                <textarea id="descripcion-denuncia" rows="6" placeholder="Describa los hechos en detalle: qué sucedió, cuándo, dónde, quiénes estuvieron involucrados, montos aproximados, etc."
+                    style="width:100%; padding:12px; border:1px solid #ddd; border-radius:4px; font-size:15px; resize:vertical;"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Archivo adjunto (opcional, solo PDF, máx. 5MB)</label>
+                <div id="drop-zone-denuncia" style="border:2px dashed #ddd; border-radius:8px; padding:24px; text-align:center; cursor:pointer; color:#888;">
+                    <p>Haga clic o arrastre su archivo PDF aquí</p>
+                    <input type="file" id="archivo-denuncia" accept=".pdf" style="display:none;">
+                </div>
+                <p id="nombre-archivo" style="margin-top:8px; font-size:13px; color:#555;"></p>
+            </div>
+            <div style="display:flex; gap:12px; margin-top:8px;">
+                <button id="btn-cancelar" class="nav-item" style="background:#6c757d; color:#fff; border-radius:6px; padding:12px 28px; cursor:pointer; border:none;">
+                    Cancelar
+                </button>
+                <button id="btn-enviar-denuncia" class="btn-primary" style="padding:12px 32px;">
+                    Enviar denuncia
+                </button>
+            </div>
+        </div>
+    </main>
+</div>
+<script type="module" src="js/views/denunciaAnonima.js"></script>
+<script src="js/components/sidebar.js"></script>
+</body>
+</html>
