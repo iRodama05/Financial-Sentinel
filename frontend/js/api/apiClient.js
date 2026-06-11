@@ -1,6 +1,5 @@
 // frontend/js/api/apiClient.js
 const API_BASE_URL = 'http://s9ddf9px2u662rwatb5mq860.198.211.99.43.sslip.io/api';
-
 export const peticionProtegida = async (endpoint, options = {}) => {
     const token = localStorage.getItem('token_sentinel');
     

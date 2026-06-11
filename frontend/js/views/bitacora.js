@@ -32,7 +32,7 @@ function badgeOp(op) {
 
 async function cargarBitacora() {
     try {
-        const datos = await peticionProtegida('/api/bitacora');
+        const datos = await peticionProtegida('/bitacora');
         const tbody = document.getElementById('tabla-bitacora-body');
 
         if (!datos || datos.length === 0) {
