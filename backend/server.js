@@ -1,18 +1,15 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import pool from './db/connection.js';
 import clientRoutes from './routes/clientRoutes.js';
 import authRoutes from './routes/authRoutes.js';
 import alertaRoutes from './routes/alertaRoutes.js';
 import dashboardRoutes from './routes/dashboardRoutes.js';
 import operacionRoutes from './routes/operacionRoutes.js';
 import contratoRoutes from './routes/contratoRoutes.js';
-import bcrypt from 'bcrypt';
-import clienteRoutes from './routes/clientRoutes.js';
 import reporteRoutes from './routes/reporteRoutes.js';
 import usuarioRoutes from './routes/usuarioRoutes.js';
-import cargaRoutes from './routes/cargaRoutes.js'; 
+import cargaRoutes from './routes/cargaRoutes.js';
 
 dotenv.config();
 

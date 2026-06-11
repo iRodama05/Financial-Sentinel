@@ -1,5 +1,5 @@
 import pool from '../db/connection.js';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 
 export const crearUsuario = async (req, res) => {
     try {
