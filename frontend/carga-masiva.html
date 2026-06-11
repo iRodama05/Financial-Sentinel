@@ -19,7 +19,7 @@
                 <a href="operaciones.html" class="nav-item">Operaciones</a>
                 <a href="alertas.html" class="nav-item">Alertas</a>
                 <a href="reportes.html" class="nav-item">Reportes</a>
-                <a href="denuncia-anonima.html" class="nav-item">Denuncia Anónima</a>
+                
                 <a href="carga-masiva.html" class="nav-item active" id="menu-csv" style="display: none;">Carga Masiva CSV</a>
                 <a href="usuarios.html" class="nav-item" id="menu-usuarios" style="display: none;">Gestión Usuarios</a>
             </nav>
@@ -28,7 +28,7 @@
 
         <main class="main-content">
             <header class="dashboard-header">
-                <h2>Ingesta Masiva de CSV</h2>
+                <h2>Ingesta Masiva de Clientes</h2>
             </header>
             
             <div class="modulo-container">
@@ -40,11 +40,6 @@
 
                 <div id="seccion-carga">
                     <form id="form-carga-masiva">
-                        <label for="tipo-carga">Tipo de carga</label>
-                        <select id="tipo-carga" class="form-control">
-                            <option value="clientes">Clientes</option>
-                            <option value="operaciones">Operaciones</option>
-                        </select>
                         <div class="drop-zone" id="drop-zone-csv">
                             <p>Arrastra tu archivo .csv aquí o <strong>haz clic para buscar</strong></p>
                             <input type="file" id="input-file-csv" accept=".csv" style="display: none;">

@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const archivoSeleccionadoTxt = document.getElementById('archivo-seleccionado');
     const feedback = document.getElementById('panel-feedback');
     const form = document.getElementById('form-carga-masiva');
-    const tipoCarga = document.getElementById('tipo-carga');
 
     // Forzar el click al input oculto cuando se toca la zona
     dropZone.addEventListener('click', () => fileInput.click());
@@ -68,13 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.append('archivo_csv', fileInput.files[0]); 
 
         try {
-            let endpoint = 'http://s9ddf9px2u662rwatb5mq860.198.211.99.43.sslip.io/api/carga/clientes';
-
-            if (tipoCarga.value === 'operaciones') {
-            endpoint = 'http://s9ddf9px2u662rwatb5mq860.198.211.99.43.sslip.io/api/carga/operaciones';
-            }
-
-            const respuesta = await fetch(endpoint, {
+            const respuesta = await fetch('http://s9ddf9px2u662rwatb5mq860.198.211.99.43.sslip.io/api/carga/clientes', {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`
