@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (menuUsuarios) menuUsuarios.style.display = 'block';
         if (menuCsv) menuCsv.style.display = 'block';
         if (menuBitacora)   menuBitacora.style.display   = 'block';
+        if (menuDenuncias)  menuDenuncias.style.display  = 'block';
         if (btnImportarCsv) btnImportarCsv.style.display = 'inline-block';
         
     } else if (rolUsuario === 'oficial' || rolUsuario === 'oficial de cumplimiento') {

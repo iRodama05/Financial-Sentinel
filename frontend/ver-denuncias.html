@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bitácora - Financial Sentinel</title>
+    <title>Ver Denuncias - Sistema SVA</title>
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/dashboard.css">
     <link rel="stylesheet" href="css/bitacora.css">
 </head>
 <body class="app-body">
 <div class="app-container">
-
     <aside class="sidebar">
         <h2 class="sidebar-brand">Sistema SVA</h2>
         <nav class="sidebar-nav">
@@ -20,48 +19,43 @@
             <a href="alertas.html" class="nav-item">Alertas</a>
             <a href="reportes.html" class="nav-item">Reportes</a>
             <a href="denuncia-anonima.html" class="nav-item">Denuncia Anónima</a>
-            <a href="ver-denuncias.html" class="nav-item" id="menu-denuncias" style="display: none;">Ver Denuncias</a>
-            <a href="bitacora.html" class="nav-item active" id="menu-bitacora" style="display:none;">Bitácora</a>
-            <a href="carga-masiva.html" class="nav-item" id="menu-csv" style="display:none;">Carga Masiva CSV</a>
-            <a href="usuarios.html" class="nav-item" id="menu-usuarios" style="display:none;">Gestión Usuarios</a>
+            <a href="ver-denuncias.html" class="nav-item active" id="menu-denuncias" style="display: none;">Ver Denuncias</a>
+            <a href="bitacora.html" class="nav-item" id="menu-bitacora" style="display: none;">Bitácora</a>
+            <a href="carga-masiva.html" class="nav-item" id="menu-csv" style="display: none;">Carga Masiva CSV</a>
+            <a href="usuarios.html" class="nav-item" id="menu-usuarios" style="display: none;">Gestión Usuarios</a>
         </nav>
         <button id="btn-logout" class="nav-item logout-btn">Cerrar sesión</button>
     </aside>
-
     <main class="main-content">
         <header class="dashboard-header">
-            <h1>Bitácora de Clientes</h1>
+            <h1>Denuncias Anónimas</h1>
             <p class="user-info">Usuario: <span id="nombre-usuario">Cargando...</span></p>
         </header>
-
         <div id="bloqueo-acceso" class="alerta alerta-error" style="display:none;">
-            <strong>Acceso Restringido:</strong> Esta sección es exclusiva para Administradores.
+            <strong>Acceso Restringido:</strong> Esta sección es exclusiva para el Oficial de Cumplimiento.
         </div>
-
-        <div id="seccion-bitacora" style="display:none;">
+        <div id="seccion-denuncias" style="display:none;">
             <div class="cards-container mb-20">
-                <div class="summary-card"><h3>Total de eventos</h3><p class="card-number" id="card-total">—</p></div>
-                <div class="summary-card kpi-insert"><h3>Altas (INSERT)</h3><p class="card-number" id="card-insert">—</p></div>
-                <div class="summary-card kpi-update"><h3>Modificaciones</h3><p class="card-number" id="card-update">—</p></div>
-                <div class="summary-card kpi-delete"><h3>Bajas (DELETE)</h3><p class="card-number" id="card-delete">—</p></div>
+                <div class="summary-card"><h3>Total de denuncias</h3><p class="card-number" id="card-total">—</p></div>
+                <div class="summary-card"><h3>Con archivo PDF</h3><p class="card-number" id="card-con-pdf" style="color:#21409A;">—</p></div>
+                <div class="summary-card"><h3>Sin archivo</h3><p class="card-number" id="card-sin-pdf" style="color:#94a3b8;">—</p></div>
             </div>
-
             <div class="section-card">
-                <div class="section-header sh-blue"><h2>Registro de Cambios</h2></div>
+                <div class="section-header sh-blue"><h2>Registro de Denuncias</h2></div>
                 <div class="table-container">
                     <table class="tabla-bitacora">
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Operación</th>
-                                <th>Cliente</th>
+                                <th>Tipo</th>
+                                <th>Asunto</th>
                                 <th>Fecha</th>
-                                <th>Usuario DB</th>
+                                <th>PDF</th>
                                 <th>Detalle</th>
                             </tr>
                         </thead>
-                        <tbody id="tabla-bitacora-body">
-                            <tr><td colspan="6" class="bitacora-estado">Cargando bitácora…</td></tr>
+                        <tbody id="tabla-denuncias-body">
+                            <tr><td colspan="6" class="bitacora-estado">Cargando denuncias…</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -69,16 +63,14 @@
         </div>
     </main>
 </div>
-
-<div id="modal-detalle" class="modal-overlay-bitacora">
+<div id="modal-denuncia" class="modal-overlay-bitacora">
     <div class="modal-box-bitacora">
-        <h3 id="modal-titulo">Detalle del evento</h3>
+        <h3 id="modal-titulo">Detalle de denuncia</h3>
         <div id="modal-contenido"></div>
         <button class="btn-cerrar-modal" onclick="cerrarModal()">Cerrar</button>
     </div>
 </div>
-
-<script type="module" src="js/views/bitacora.js"></script>
+<script type="module" src="js/views/verDenuncias.js"></script>
 <script src="js/components/sidebar.js"></script>
 </body>
 </html>
