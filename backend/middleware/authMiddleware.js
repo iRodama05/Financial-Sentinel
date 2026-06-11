@@ -56,3 +56,12 @@ export const verificarEmpleado = (req, res, next) => {
     }
     next();
 };
+
+export const soloOficial = (req, res, next) => {
+    if (!req.usuario || req.usuario.correo !== 'oficial@fsst.com') {
+        return res.status(403).json({
+            error: 'Acceso denegado: La bitácora es exclusiva del Oficial de Cumplimiento (oficial@fsst.com).'
+        });
+    }
+    next();
+};

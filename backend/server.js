@@ -12,6 +12,7 @@ import contratoRoutes from './routes/contratoRoutes.js';
 import reporteRoutes from './routes/reporteRoutes.js';
 import usuarioRoutes from './routes/usuarioRoutes.js';
 import cargaRoutes from './routes/cargaRoutes.js';
+import bitacoraRoutes from './routes/bitacoraRoutes.js';
 
 dotenv.config();
 
@@ -36,6 +37,8 @@ app.use('/api/contratos', contratoRoutes);
 app.use('/api/reportes', reporteRoutes);
 app.use('/api/usuarios', usuarioRoutes);
 app.use('/api/carga', cargaRoutes);
+app.use('/api/bitacora', bitacoraRoutes);
+
 
 
 // RUTA TEMPORAL PARA GENERAR REGLAS PERFILADAS Y ALERTAS
