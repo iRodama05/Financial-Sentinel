@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuUsuarios = document.getElementById('menu-usuarios');
     const menuCsv = document.getElementById('menu-csv');
     const menuBitacora  = document.getElementById('menu-bitacora');
+    const menuDenuncias  = document.getElementById('menu-denuncias');
     const btnImportarCsv = document.getElementById('btn-importar-csv');
 
     // 3. Encendemos los botones según tu nivel de acceso
