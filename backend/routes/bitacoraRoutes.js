@@ -1,22 +1,11 @@
-import * as BitacoraModel from '../models/bitacoraModel.js';
+import express from 'express';
+import { listarBitacora, listarBitacoraCliente } from '../controllers/bitacoraController.js';
+import { verificarToken, soloOficial } from '../middleware/authMiddleware.js';
 
-export const listarBitacora = async (req, res) => {
-    try {
-        const registros = await BitacoraModel.getAllBitacora();
-        res.status(200).json(registros);
-    } catch (error) {
-        console.error('Error en listarBitacora:', error);
-        res.status(500).json({ error: 'Error al obtener la bitácora' });
-    }
-};
+const router = express.Router();
 
-export const listarBitacoraCliente = async (req, res) => {
-    try {
-        const { id } = req.params;
-        const registros = await BitacoraModel.getBitacoraByCliente(id);
-        res.status(200).json(registros);
-    } catch (error) {
-        console.error('Error en listarBitacoraCliente:', error);
-        res.status(500).json({ error: 'Error al obtener el historial del cliente' });
-    }
-};
+// Ambas rutas protegidas con doble candado: token + correo oficial@fsst.com
+router.get('/',             verificarToken, soloOficial, listarBitacora);
+router.get('/cliente/:id',  verificarToken, soloOficial, listarBitacoraCliente);
+
+export default router;
