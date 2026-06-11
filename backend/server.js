@@ -1,6 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import pool from './db/connection.js';
+
 import clientRoutes from './routes/clientRoutes.js';
 import authRoutes from './routes/authRoutes.js';
 import alertaRoutes from './routes/alertaRoutes.js';
@@ -17,11 +19,8 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // ===================[MIDDLEWARES]===================
-// <Inicia IA>
-app.use(cors()); 
-
-app.use(express.json()); 
-// <Termina IA>
+app.use(cors());
+app.use(express.json());
 
 // ======================[RUTAS]======================
 app.get('/api/health', (req, res) => {
@@ -33,13 +32,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/alertas', alertaRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/operaciones', operacionRoutes);
-app.use('/api/clientes', clientRoutes);
-app.use('/api/auth', authRoutes);
-app.use('/api/alertas', alertaRoutes);
 app.use('/api/contratos', contratoRoutes);
-app.use('/api/clientes', clienteRoutes);
-app.use('/api/alertas', alertaRoutes);
-app.use('/api/operaciones', operacionRoutes);
 app.use('/api/reportes', reporteRoutes);
 app.use('/api/usuarios', usuarioRoutes);
 app.use('/api/carga', cargaRoutes);
