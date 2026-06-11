@@ -20,7 +20,9 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // ===================[MIDDLEWARES]===================
-app.use(cors());
+app.use(cors({
+    origin: 'http://mw1gmypel1rq9o27e19xgwrx.198.211.99.43.sslip.io'
+}));
 app.use(express.json());
 
 // ======================[RUTAS]======================
