@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.error("Fallo crítico al cargar la vista de reportes:", error);
         const cuerpoTabla = document.getElementById('tabla-reportes-body');
         if (cuerpoTabla) {
-            cuerpoTabla.innerHTML = `<tr><td colspan="6" style="color:red; font-weight:bold;">Error de conexión: ${error.message || 'El backend no respondió.'}</td></tr>`;
+            cuerpoTabla.innerHTML = `<tr><td colspan="5" style="color:red; font-weight:bold;">Error de conexión: ${error.message || 'El backend no respondió.'}</td></tr>`;
         }
     }
 });
@@ -65,7 +65,7 @@ function renderizarTabla(datos) {
     cuerpo.innerHTML = '';
 
     if (!datos || datos.length === 0) {
-        cuerpo.innerHTML = '<tr><td colspan="6" style="text-align:center;">No hay reportes en la bóveda. Ve a Alertas para generar uno.</td></tr>';
+        cuerpo.innerHTML = '<tr><td colspan="5" style="text-align:center;">No hay reportes en la bóveda. Ve a Alertas para generar uno.</td></tr>';
         return;
     }
 
@@ -79,7 +79,6 @@ function renderizarTabla(datos) {
         }
         
         tr.innerHTML = `
-            <td><strong>R-00${r.id}</strong></td>
             <td>${r.descripcion || 'Reporte Regulatorio'}</td>
             <td>${r.nombre_cliente || 'Cliente no especificado'}</td>
             <td style="text-transform: capitalize;">${r.periodo || 'N/A'}</td>

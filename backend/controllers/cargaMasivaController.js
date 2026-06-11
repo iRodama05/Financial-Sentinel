@@ -95,6 +95,95 @@ export const procesarCargaMasiva = async (req, res) => {
     }
 };
 
+export const procesarCargaOperaciones = async (req, res) => {
+    try {
+        if (!req.file) {
+            return res.status(400).json({ error: "No se subió ningún archivo CSV." });
+        }
+
+        const operacionesNuevas = [];
+        const stream = Readable.from(req.file.buffer);
+
+        stream
+            .pipe(csv({
+                mapHeaders: ({ header }) => header
+                    .replace(/^\uFEFF/, '') // Quita caracteres ocultos de Excel
+                    .trim()
+                    .toLowerCase()
+                    .replace(/\s+/g, '_')
+            }))
+            .on('data', (fila) => {
+                operacionesNuevas.push(fila);
+            })
+            .on('end', async () => {
+                // Iniciamos una transacción en la base de datos para asegurar integridad
+                const clienteDB = await pool.connect();
+
+                try {
+                    await clienteDB.query('BEGIN'); // Empezamos la transacción
+
+                    let operacionesInsertadas = 0;
+
+                    for (const operacion of operacionesNuevas) {
+                        // 1. Limpieza de datos (Si viene vacío en el CSV, lo volvemos nulo)
+                        const contrato_id = operacion.contrato_id?.trim() || null;
+                        const monto = operacion.monto?.trim() || null;
+                        const tipo_movimiento = operacion.tipo_movimiento?.trim() || null;
+                        const fecha_operacion = operacion.fecha_operacion?.trim() || null;
+
+                        if (!contrato_id || !monto || !tipo_movimiento || !fecha_operacion) {
+                            console.log('Fila inválida omitida:', operacion);
+                            continue;
+                        }
+
+                        // 2. Validación de contrato existente
+                        const contratoExiste = await clienteDB.query(
+                            'SELECT id FROM contratos WHERE id = $1',
+                            [contrato_id]
+                        );
+
+                        if (contratoExiste.rows.length === 0) {
+                            console.log(`Contrato ${contrato_id} no existe. Operación omitida.`);
+                            continue;
+                        }
+
+                        // 3. Inserción SQL de operaciones
+                        const query = `
+                            INSERT INTO operaciones (
+                                contrato_id, monto, tipo_movimiento, fecha_operacion
+                            ) VALUES (
+                                $1, $2, $3, $4
+                            );
+                        `;
+
+                        await clienteDB.query(query, [
+                            contrato_id, monto, tipo_movimiento, fecha_operacion
+                        ]);
+
+                        operacionesInsertadas++;
+                    }
+
+                    await clienteDB.query('COMMIT'); // Guardamos todo de golpe si no hubo errores
+
+                    res.status(200).json({
+                        mensaje: `¡Ingesta exitosa! Se importaron ${operacionesInsertadas} operaciones a la bóveda.`
+                    });
+
+                } catch (dbError) {
+                    await clienteDB.query('ROLLBACK'); // Si una operación falla, cancelamos toda la carga (Integridad)
+                    console.error("Error al insertar el lote CSV de operaciones en DB:", dbError);
+                    res.status(500).json({ error: "Fallo durante la inserción de operaciones. Revisa el formato de los datos." });
+                } finally {
+                    clienteDB.release(); // Liberamos la conexión
+                }
+            });
+
+    } catch (error) {
+        console.error("Error crítico:", error);
+        res.status(500).json({ error: "Fallo interno procesando el archivo de operaciones." });
+    }
+};
+
 // 3. EXPORTAMOS EL MIDDLEWARE PARA QUE TUS RUTAS LO ENCUENTREN
 // Nota: 'archivo_csv' es exactamente el nombre que tu frontend manda en el FormData
 export const uploadMiddleware = upload.single('archivo_csv');

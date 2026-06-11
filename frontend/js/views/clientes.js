@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         // =======================================================
 
     } catch (error) {
-        document.getElementById('tabla-clientes-body').innerHTML = `<tr><td colspan="5" style="color:red">Error al cargar clientes</td></tr>`;
+        document.getElementById('tabla-clientes-body').innerHTML = `<tr><td colspan="4" style="color:red">Error al cargar clientes</td></tr>`;
 }
 
     // EVENTOS DE BÚSQUEDA Y FILTRO
@@ -66,7 +66,7 @@ function renderizarTabla(datosFiltrados) {
     cuerpo.innerHTML = '';
 
     if (datosFiltrados.length === 0) {
-        cuerpo.innerHTML = '<tr><td colspan="5" style="text-align:center;">No se encontraron clientes</td></tr>';
+        cuerpo.innerHTML = '<tr><td colspan="4" style="text-align:center;">No se encontraron clientes</td></tr>';
         return;
     }
 
@@ -78,7 +78,6 @@ function renderizarTabla(datosFiltrados) {
         // Creamos la fila
         const tr = document.createElement('tr');
         tr.innerHTML = `
-            <td>C-00${c.id}</td>
             <td><strong>${c.nombre_completo}</strong></td>
             <td>${c.rfc}</td>
             <td>${etiquetaRiesgo}</td>

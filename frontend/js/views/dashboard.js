@@ -39,12 +39,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         const topClientes = clientes.slice(0, 5); // Cortamos el array
         
         if (topClientes.length === 0) {
-            cuerpoClientes.innerHTML = '<tr><td colspan="4" style="text-align:center;">No hay clientes</td></tr>';
+            cuerpoClientes.innerHTML = '<tr><td colspan="3" style="text-align:center;">No hay clientes</td></tr>';
         } else {
             topClientes.forEach(c => {
                 cuerpoClientes.innerHTML += `
                     <tr>
-                        <td>C-00${c.id}</td>
                         <td>${c.nombre_completo}</td>
                         <td>${c.rfc}</td>
                         <td>${c.correo}</td>
@@ -60,12 +59,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         const topAlertas = alertas.slice(0, 5);
 
         if (topAlertas.length === 0) {
-            cuerpoAlertas.innerHTML = '<tr><td colspan="4" style="text-align:center;">No hay alertas pendientes</td></tr>';
+            cuerpoAlertas.innerHTML = '<tr><td colspan="3" style="text-align:center;">No hay alertas pendientes</td></tr>';
         } else {
             topAlertas.forEach(a => {
                 cuerpoAlertas.innerHTML += `
                     <tr>
-                        <td>A-00${a.id}</td>
                         <td><strong>${a.nombre_cliente}</strong></td>
                         <td>${a.nombre_regla || 'Regla General'}</td>
                         <td><span style="color: ${a.estatus === 'Nueva' ? 'red' : 'orange'}">${a.estatus}</span></td>

@@ -68,7 +68,7 @@ async function cargarAlertas() {
         cuerpo.innerHTML = '';
 
         if (alertasTotales.length === 0) {
-            cuerpo.innerHTML = '<tr><td colspan="6" style="text-align:center;">No hay alertas en el sistema.</td></tr>';
+            cuerpo.innerHTML = '<tr><td colspan="5" style="text-align:center;">No hay alertas en el sistema.</td></tr>';
             return;
         }
 
@@ -82,7 +82,6 @@ async function cargarAlertas() {
 
             const tr = document.createElement('tr');
             tr.innerHTML = `
-                <td><strong>A-00${a.id}</strong></td>
                 <td>${a.nombre_cliente || 'Desconocido'}</td>
                 <td>${a.nombre_regla || 'Evaluación General de Riesgo'}</td>
                 <td>${fechaLimpia}</td>
@@ -102,7 +101,7 @@ async function cargarAlertas() {
         });
 
     } catch (error) {
-        document.getElementById('tabla-alertas-body').innerHTML = `<tr><td colspan="6" style="color:red">Error al cargar el motor de alertas</td></tr>`;
+        document.getElementById('tabla-alertas-body').innerHTML = `<tr><td colspan="5" style="color:red">Error al cargar el motor de alertas</td></tr>`;
     }
 }
 
@@ -112,7 +111,6 @@ function abrirModal(id) {
 
     alertaActualSeleccionada = alerta;
 
-    document.getElementById('modal-folio').textContent = `A-00${alerta.id}`;
     document.getElementById('modal-cliente-nombre').textContent = alerta.nombre_cliente || 'Desconocido';
     document.getElementById('select-nuevo-estatus').value = alerta.estatus;
     
