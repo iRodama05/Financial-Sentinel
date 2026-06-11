@@ -20,6 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
     } else if (rolUsuario === 'oficial' || rolUsuario === 'oficial de cumplimiento') {
         if (menuCsv) menuCsv.style.display = 'block';
+        if (menuBitacora)   menuBitacora.style.display   = 'block';
+        if (menuDenuncias)  menuDenuncias.style.display  = 'block';
         if (btnImportarCsv) btnImportarCsv.style.display = 'inline-block';
     }
 });
