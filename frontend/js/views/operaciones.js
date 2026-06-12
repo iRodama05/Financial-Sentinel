@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch (error) {
         // Esto te dirá exactamente por qué rebotó la conexión
         console.error("Fallo crítico en la red:", error); 
-        document.getElementById('tabla-operaciones-body').innerHTML = `<tr><td colspan="6" style="color:red">Error al conectar con el historial transaccional</td></tr>`;
+        document.getElementById('tabla-operaciones-body').innerHTML = `<tr><td colspan="5" style="color:red">Error al conectar con el historial transaccional</td></tr>`;
     }
 
     // EVENTOS DE BÚSQUEDA Y FILTRO EN TIEMPO REAL
@@ -49,7 +49,7 @@ function renderizarTabla(datosFiltrados) {
     cuerpo.innerHTML = '';
 
     if (datosFiltrados.length === 0) {
-        cuerpo.innerHTML = '<tr><td colspan="6" style="text-align:center;">No se encontraron movimientos coincidiendo con los criterios</td></tr>';
+        cuerpo.innerHTML = '<tr><td colspan="5" style="text-align:center;">No se encontraron movimientos coincidiendo con los criterios</td></tr>';
         return;
     }
 
@@ -67,23 +67,10 @@ function renderizarTabla(datosFiltrados) {
             <td>C-00${o.contrato_folio}</td>
             <td><span class="badge ${badgeClass}">${o.tipo_movimiento}</span></td>
             <td>$${parseFloat(o.monto).toFixed(2)}</td>
-            <td>
-                <button class="btn-ver-perfil" data-cliente-id="${o.cliente_id}">Ver Expediente Cliente</button>
-            </td>
         `;
         cuerpo.appendChild(tr);
     });
 
-    // Activar los botones recién creados (Deep Linking)
-    document.querySelectorAll('.btn-ver-perfil').forEach(boton => {
-        boton.addEventListener('click', (e) => {
-            const clienteId = parseInt(e.target.getAttribute('data-cliente-id'));
-            // ==========================================================
-            // DEEP LINKING: Redirige pasando el ID por la URL
-            // ==========================================================
-            window.location.href = `clientes.html?cliente_id=${clienteId}`;
-        });
-    });
 }
 
 function aplicarFiltros() {
