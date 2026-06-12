@@ -18,6 +18,14 @@ export const peticionProtegida = async (endpoint, options = {}) => {
         const data = await respuesta.json();
 
         if (!respuesta.ok) {
+            const rolUsuario = (localStorage.getItem('usuario_rol') || '').toLowerCase().trim();
+            if (respuesta.status === 403 && rolUsuario === 'empleado') {
+                if (!window.location.pathname.endsWith('operaciones.html')) {
+                    window.location.href = 'operaciones.html';
+                }
+                return null;
+            }
+
             throw new Error(data.error || 'Error desconocido del servidor');
         }
 
