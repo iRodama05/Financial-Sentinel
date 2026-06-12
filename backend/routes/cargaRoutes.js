@@ -4,7 +4,7 @@ import { verificarToken, verificarNoEmpleado } from '../middleware/authMiddlewar
 
 const router = express.Router();
 
-router.post('/clientes', uploadMiddleware, verificarNoEmpleado, procesarCargaMasiva);
-router.post('/operaciones', uploadMiddleware, verificarNoEmpleado, procesarCargaOperaciones);
+router.post('/clientes',verificarToken, uploadMiddleware, verificarNoEmpleado, procesarCargaMasiva);
+router.post('/operaciones',verificarToken, uploadMiddleware, verificarNoEmpleado, procesarCargaOperaciones);
 
 export default router;

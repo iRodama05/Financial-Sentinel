@@ -34,6 +34,11 @@ export const verificarToken = (req, res, next) => {
         });
     }
 
+    if (req.usuario && req.usuario.rol === 'Empleado') {
+        return res.status(403).json({ 
+            error: "Acceso denegado: Tu perfil solo permite registrar denuncias anónimas y consultar operaciones." 
+        });
+    }
     next();
 };
 
