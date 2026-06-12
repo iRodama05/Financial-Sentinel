@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     const token = localStorage.getItem('token_sentinel');
     if (!token) return window.location.href = 'login.html';
     
+    const rolUsuario = (localStorage.getItem('usuario_rol') || '').toLowerCase().trim();
+    if (rolUsuario === 'empleado') return window.location.href = 'operaciones.html';
+    
     document.getElementById('nombre-usuario').textContent = localStorage.getItem('usuario_nombre') || 'Usuario Autorizado';
     document.getElementById('btn-logout').addEventListener('click', () => {
         localStorage.clear();

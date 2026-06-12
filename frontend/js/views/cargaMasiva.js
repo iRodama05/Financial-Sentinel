@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const seccionCarga = document.getElementById('seccion-carga');
     const vistaBloqueada = document.getElementById('vista-bloqueada');
 
-    if (rolUsuario === 'visor' || !token) {
+    if (rolUsuario === 'visor' || rolUsuario == 'Empleado' || !token) {
         seccionCarga.style.display = 'none';
         vistaBloqueada.style.display = 'block';
         return; // Detiene la ejecución del script

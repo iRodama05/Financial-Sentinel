@@ -8,6 +8,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         window.location.href = 'login.html'; // Lo pateamos al login si no tiene gafete
         return;
     }
+    
+    // El Empleado solo puede usar Operaciones y Denuncia Anónima
+    const rolUsuario = (localStorage.getItem('usuario_rol') || '').toLowerCase().trim();
+    if (rolUsuario === 'empleado') {
+        window.location.href = 'operaciones.html';
+        return;
+    }
 
     // Mostrar el nombre del usuario logueado
     const nombreUsuario = localStorage.getItem('usuario_nombre') || 'Usuario Autorizado';

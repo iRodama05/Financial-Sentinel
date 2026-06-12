@@ -4,6 +4,9 @@ let reportesTotales = [];
 
 document.addEventListener('DOMContentLoaded', async () => {
     
+    const rolUsuario = (localStorage.getItem('usuario_rol') || '').toLowerCase().trim();
+    if (rolUsuario === 'empleado') return window.location.href = 'operaciones.html';
+
     // 1. Configuración de Sesión
     const nombreUsuario = document.getElementById('nombre-usuario');
     if (nombreUsuario) {

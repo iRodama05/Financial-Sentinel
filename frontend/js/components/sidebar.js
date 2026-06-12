@@ -23,5 +23,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (menuBitacora)   menuBitacora.style.display   = 'block';
         if (menuDenuncias)  menuDenuncias.style.display  = 'block';
         if (btnImportarCsv) btnImportarCsv.style.display = 'inline-block';
+    
+    } else if (rolUsuario === 'empleado') {
+        const paginasPermitidas = ['operaciones.html', 'denuncia-anonima.html'];
+        document.querySelectorAll('.nav-item').forEach((item) => {
+            const href = (item.getAttribute('href') || '').toLowerCase();
+            if (href && !paginasPermitidas.includes(href)) {
+                item.style.display = 'none';
+            }
+        });
     }
 });
