@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     // Seguridad y Nombre 
     const token = localStorage.getItem('token_sentinel');
-    if (!token) return window.location.href = 'login.html';
+    if (!token) return window.location.href = 'index.html';
     document.getElementById('nombre-usuario').textContent = localStorage.getItem('usuario_nombre') || 'Usuario';
     
     document.getElementById('btn-logout').addEventListener('click', () => {
