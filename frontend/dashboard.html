@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Principal - Sistema SVA</title>
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body class="app-body">
+
+    <div class="app-container">
+        
+        <aside class="sidebar">
+            <h2 class="sidebar-brand">Sistema SVA</h2>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item active">Dashboard</a>
+                <a href="clientes.html" class="nav-item">Clientes</a>
+                <a href="operaciones.html" class="nav-item">Operaciones</a>
+                <a href="alertas.html" class="nav-item">Alertas</a>
+                <a href="denuncia-anonima.html" class="nav-item">Denuncia Anónima</a>
+                <a href="reportes.html" class="nav-item">Reportes</a>
+                <a href="ver-denuncias.html" class="nav-item" id="menu-denuncias" style="display: none;">Ver Denuncias</a>
+                <a href="bitacora.html" class="nav-item" id="menu-bitacora" style="display: none;">Bitácora</a>
+                <a href="carga-masiva.html" class="nav-item" id="menu-csv" style="display: none;">Carga Masiva CSV</a>
+                <a href="usuarios.html" class="nav-item" id="menu-usuarios" style="display: none;">Gestión Usuarios</a>
+            </nav>
+            <button id="btn-logout" class="nav-item logout-btn">Cerrar sesión</button>
+        </aside>
+
+        <main class="main-content">
+            <header class="dashboard-header">
+                <h1>Dashboard Principal</h1>
+                <p class="user-info">Usuario: <span id="nombre-usuario">Cargando...</span></p>
+                <p class="user-role">Rol: Oficial de Cumplimiento</p>
+            </header>
+
+            <hr class="divider">
+
+            <section class="summary-section">
+                <h2>Resumen general</h2>
+                <div class="cards-container">
+                    <div class="summary-card">
+                        <h3>Clientes</h3>
+                        <p>Total de clientes: <span id="total-clientes">...</span></p>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Alertas</h3>
+                        <p>Total de alertas pendientes: <span id="total-alertas">...</span></p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="table-section">
+                <h2>Clientes recientes</h2>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Nombre Completo</th>
+                                <th>RFC</th>
+                                <th>Correo</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-clientes-body">
+                            <tr><td colspan="3">Cargando datos...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="table-section">
+                <h2>Alertas recientes</h2>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Cliente</th>
+                                <th>Regla Rota</th>
+                                <th>Estatus</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-alertas-body">
+                            <tr><td colspan="3">Cargando datos...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script type="module" src="js/views/dashboard.js"></script>
+    <script src="js/components/sidebar.js"></script>
+</body>
+</html>

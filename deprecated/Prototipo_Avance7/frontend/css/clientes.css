@@ -1,0 +1,125 @@
+/* Espaciados y títulos */
+.section-title {
+    color: #21409A;
+    font-weight: 500;
+    margin: 15px 0;
+    font-size: 24px;
+}
+
+.mb-20 { margin-bottom: 20px; }
+
+/* Números grandes en las tarjetas */
+.card-number {
+    font-size: 28px !important;
+    font-weight: bold;
+    color: #21409A !important;
+    margin-top: 10px !important;
+}
+
+/* Barra de Filtros */
+.filters-container {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.filter-input, .filter-select {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+.filter-input { flex-grow: 1; } /* La barra de búsqueda ocupa todo el espacio posible */
+.filter-select { width: 250px; }
+
+/* Botones de Acción en la Tabla */
+.btn-ver {
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-ver:hover { background-color: #0b5ed7; }
+
+/* ==================================
+   MAGIA DEL MODAL
+   ================================== */
+.modal-overlay {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(2px); /* Efecto cristalino atrás */
+}
+
+/* Clase que activa el modal mediante JS */
+.modal-overlay.activo { display: flex; }
+
+.modal-content {
+    background-color: white;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 650px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    animation: deslizarArriba 0.3s ease-out;
+}
+
+@keyframes deslizarArriba {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    border-bottom: 1px solid #eee;
+    background-color: #f8f9fa;
+    border-radius: 8px 8px 0 0;
+}
+
+.modal-header h2 { color: #21409A; margin: 0; font-size: 20px; }
+
+.btn-close {
+    background: none; border: none; font-size: 28px;
+    color: #888; cursor: pointer; line-height: 1;
+}
+
+.btn-close:hover { color: #333; }
+
+.modal-body { padding: 25px; }
+
+/* Cuadrícula para acomodar la información como un expediente */
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.info-item {
+    background: #fdfdfd;
+    padding: 12px;
+    border: 1px solid #eee;
+    border-radius: 6px;
+}
+
+.info-label {
+    display: block;
+    font-size: 12px;
+    color: #777;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.info-value { font-size: 15px; color: #333; font-weight: 500; }
