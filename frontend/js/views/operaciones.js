@@ -8,10 +8,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     const token = localStorage.getItem('token_sentinel');
     if (!token) return window.location.href = 'index.html';
     document.getElementById('nombre-usuario').textContent = localStorage.getItem('usuario_nombre') || 'Usuario';
+    document.getElementById('rol-usuario').textContent =
+    localStorage.getItem('usuario_rol') || 'Usuario';
     
     document.getElementById('btn-logout').addEventListener('click', () => {
-        localStorage.clear();
-        window.location.href = 'login.html';
+    localStorage.clear();
+    window.location.href = 'index.html';
     });
 
     // Cargar Datos del Servidor
